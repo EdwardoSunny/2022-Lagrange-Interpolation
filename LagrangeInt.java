@@ -1,16 +1,14 @@
-import java.util.ArrayList;
-
 public class LagrangeInt {
     private final double[] xData;
     private final double[] yData;
 
-    private ArrayList<Double> largrangeNumer;
-    private ArrayList<Double> largrangeDenom;
+    private double[] largrangeNumer;
+    private double[] largrangeDenom;
     public LagrangeInt(double[] xData, double[] yData) {
         this.xData = xData;
         this.yData = yData;
-        this.largrangeNumer = new ArrayList<>();
-        this.largrangeDenom = new ArrayList<>();
+        this.largrangeNumer = new double[xData.length];
+        this.largrangeDenom = new double[xData.length];
     }
 
     public double calculate(double xInput) {
@@ -31,8 +29,8 @@ public class LagrangeInt {
                     
                 }
             }
-            largrangeNumer.add(currentNumer);
-            largrangeDenom.add(currentDenom);
+            largrangeNumer[i] = currentNumer;
+            largrangeDenom[i] = currentDenom;
         }
 
         for (double num : largrangeNumer) {
@@ -47,7 +45,7 @@ public class LagrangeInt {
         
         double largrangeEstimate = 0;
         for (int i = 0; i < xData.length; i++) {
-            largrangeEstimate += (largrangeNumer.get(i)/largrangeDenom.get(i));
+            largrangeEstimate += (largrangeNumer[i]/largrangeDenom[i]);
         }
 
         return largrangeEstimate;
